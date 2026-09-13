@@ -16,7 +16,11 @@ android {
 }
 
 repositories {
-    flatDir { dirs '.' }
+    google()
+    mavenCentral()
+    flatDir {
+        dirs '.'
+    }
 }
 
 dependencies {
