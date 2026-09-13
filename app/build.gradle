@@ -16,10 +16,6 @@ android {
     }
 }
 
-repositories {
-    flatDir {
-        dirs '.'
-    }
 }
 
 dependencies {
