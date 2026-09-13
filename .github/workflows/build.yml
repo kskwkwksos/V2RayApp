@@ -6,15 +6,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
       - name: Download libbox
         run: |
-          wget -O app/libbox.aar https://github.com/singbox-android/libbox/releases/download/1.14.0/libbox.aar
+          mkdir -p app
+          wget -q --show-progress -O app/libbox.aar \
+            https://github.com/singbox-android/libbox/releases/download/1.14.0/libbox.aar
+          ls -lh app/libbox.aar
 
       - name: Setup Java
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '21'
