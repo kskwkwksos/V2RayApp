@@ -1,0 +1,29 @@
+name: Build V2RayApp
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download libbox
+        run: |
+          wget -O app/libbox.aar https://github.com/singbox-android/libbox/releases/download/1.14.0/libbox.aar
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Build APK
+        run: ./gradlew assembleDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: V2RayApp-debug
+          path: app/build/outputs/apk/debug/app-debug.apk
