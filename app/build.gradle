@@ -15,6 +15,10 @@ android {
     }
 }
 
+repositories {
+    flatDir { dirs '.' }
+}
+
 dependencies {
     implementation(name: 'libbox', ext: 'aar')
 }
