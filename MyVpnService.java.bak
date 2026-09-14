@@ -64,7 +64,7 @@ public class MyVpnService extends VpnService
                     "\"auto_route\":true,\"strict_route\":true}]," +
                     "\"outbounds\":[{\"type\":\"direct\",\"tag\":\"direct\"}]}";
 
-            // TEST: commandServer.startOrReloadService disabled
+            commandServer.startOrReloadService(config, new OverrideOptions());
 
         } catch (Exception e) {
             e.printStackTrace();
