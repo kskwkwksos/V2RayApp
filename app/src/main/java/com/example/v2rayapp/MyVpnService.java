@@ -22,6 +22,8 @@ import io.nekohasekai.libbox.PlatformInterface;
 import io.nekohasekai.libbox.PlatformUser;
 import io.nekohasekai.libbox.ShellSession;
 import io.nekohasekai.libbox.StringIterator;
+import io.nekohasekai.libbox.RoutePrefixIterator;
+import io.nekohasekai.libbox.RoutePrefix;
 import io.nekohasekai.libbox.TunOptions;
 import io.nekohasekai.libbox.WIFIState;
 import io.nekohasekai.libbox.Libbox;
@@ -112,17 +114,15 @@ public class MyVpnService extends VpnService
 
         RoutePrefixIterator ipv4 = options.getInet4Address();
         while (ipv4.hasNext()) {
-            String a = ipv4.next();
-            String[] p = a.split("/");
-            builder.addAddress(p[0], Integer.parseInt(p[1]));
+            RoutePrefix a = ipv4.next();
+            builder.addAddress(a.address(), a.prefix());
             hasIPv4 = true;
         }
 
         RoutePrefixIterator ipv6 = options.getInet6Address();
         while (ipv6.hasNext()) {
-            String a = ipv6.next();
-            String[] p = a.split("/");
-            builder.addAddress(p[0], Integer.parseInt(p[1]));
+            RoutePrefix a = ipv6.next();
+            builder.addAddress(a.address(), a.prefix());
             hasIPv6 = true;
         }
 
