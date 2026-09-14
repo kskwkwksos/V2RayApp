@@ -24,7 +24,6 @@ import io.nekohasekai.libbox.ShellSession;
 import io.nekohasekai.libbox.StringIterator;
 import io.nekohasekai.libbox.TunOptions;
 import io.nekohasekai.libbox.WIFIState;
-import io.nekohasekai.libbox.Notification as LibboxNotification;
 import io.nekohasekai.libbox.Libbox;
 import io.nekohasekai.libbox.OverrideOptions;
 import io.nekohasekai.libbox.SetupOptions;
@@ -182,7 +181,7 @@ public class MyVpnService extends VpnService
     @Override public void startNeighborMonitor(NeighborUpdateListener l) {}
     @Override public void closeNeighborMonitor(NeighborUpdateListener l) {}
 
-    @Override public void sendNotification(LibboxNotification n) {}
+    @Override public void sendNotification(io.nekohasekai.libbox.Notification n) {}
     @Override public void cancelNotification(String id, int type) {}
 
     @Override public int connectSSHAgent() { return -1; }
