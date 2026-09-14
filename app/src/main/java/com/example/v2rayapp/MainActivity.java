@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
         layout.setPadding(40, 80, 40, 40);
 
         status = new TextView(this);
-        status.setText("V2Ray App\nوضعیت: قطع");
+        status.setText("V2Ray App\nنسخه تست: 1\nوضعیت: قطع");
 
         Button connect = new Button(this);
         connect.setText("اتصال");
