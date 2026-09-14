@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
         Button connect = new Button(this);
         connect.setText("اتصال");
 
-        connect.setOnClickListener(v -> {
+        connect.setOnClickListener(v -> { status.setText("دکمه کار کرد");
             Intent intent = VpnService.prepare(this);
 
             if (intent != null) {
