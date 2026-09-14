@@ -110,7 +110,7 @@ public class MyVpnService extends VpnService
         boolean hasIPv4 = false;
         boolean hasIPv6 = false;
 
-        StringIterator ipv4 = options.getInet4Address();
+        RoutePrefixIterator ipv4 = options.getInet4Address();
         while (ipv4.hasNext()) {
             String a = ipv4.next();
             String[] p = a.split("/");
@@ -118,7 +118,7 @@ public class MyVpnService extends VpnService
             hasIPv4 = true;
         }
 
-        StringIterator ipv6 = options.getInet6Address();
+        RoutePrefixIterator ipv6 = options.getInet6Address();
         while (ipv6.hasNext()) {
             String a = ipv6.next();
             String[] p = a.split("/");
