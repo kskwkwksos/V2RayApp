@@ -185,7 +185,7 @@ public class MyVpnService extends VpnService
     @Override public void cancelNotification(String id, int type) {}
 
     @Override public int connectSSHAgent() { return -1; }
-    @Override public Object getSystemProxyStatus() { return null; }
+    @Override public io.nekohasekai.libbox.SystemProxyStatus getSystemProxyStatus() { return null; }
     @Override public void serviceReload() {}
     @Override public void serviceStop() { stopSelf(); }
     @Override public void setSystemProxyEnabled(boolean enabled) {}
