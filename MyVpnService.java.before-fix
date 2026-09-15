@@ -52,10 +52,10 @@ public class MyVpnService extends VpnService
             setup.setFixAndroidStack(true);
             setup.setDebug(false);
 
-            writeLog("BEFORE_SETUP"); Libbox.setup(setup); writeLog("AFTER_SETUP");
+            Libbox.setup(setup);
 
-            writeLog("BEFORE_COMMANDSERVER"); commandServer = new CommandServer(this, this); writeLog("AFTER_COMMANDSERVER");
-            writeLog("BEFORE_START"); commandServer.start(); writeLog("AFTER_START");
+            commandServer = new CommandServer(this, this);
+            commandServer.start();
 
             String config =
                     "{\"log\":{\"level\":\"info\"}," +
@@ -64,7 +64,7 @@ public class MyVpnService extends VpnService
                     "\"auto_route\":true,\"strict_route\":true}]," +
                     "\"outbounds\":[{\"type\":\"direct\",\"tag\":\"direct\"}]}";
 
-            writeLog("BEFORE_RELOAD"); commandServer.startOrReloadService(config, new OverrideOptions()); writeLog("AFTER_RELOAD");
+            commandServer.startOrReloadService(config, new OverrideOptions());
 
         } catch (Exception e) {
             try { java.io.FileWriter w = new java.io.FileWriter(new java.io.File(getFilesDir(), "error.log")); w.write(e.toString()); w.close(); } catch (Exception ignored) {} e.printStackTrace();
@@ -73,7 +73,6 @@ public class MyVpnService extends VpnService
         return START_STICKY;
     }
 
-    private void writeLog(String s) { try { java.io.FileWriter w = new java.io.FileWriter(new java.io.File(getFilesDir(), "debug.log"), true); w.write(s + "\n"); w.close(); } catch (Exception ignored) {} }
     private void startForegroundNotification() {
         NotificationManager nm =
                 (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
