@@ -67,7 +67,7 @@ public class MyVpnService extends VpnService
             commandServer.startOrReloadService(config, new OverrideOptions());
 
         } catch (Exception e) {
-            e.printStackTrace();
+            try { java.io.FileWriter w = new java.io.FileWriter(new java.io.File(getFilesDir(), "error.log")); w.write(e.toString()); w.close(); } catch (Exception ignored) {} e.printStackTrace();
         }
 
         return START_STICKY;
